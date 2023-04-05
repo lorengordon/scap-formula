@@ -51,7 +51,7 @@ cd build
 # Need to build content to support SCAP 1.2
 # more info here: https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#331-building-compliant-scap-12-content
 
-cmake -DSSG_TARGET_OVAL_MINOR_VERSION:STRING=10 ../
+cmake -DSSG_TARGET_OVAL_MINOR_VERSION:STRING=11 ../
 
 # Build RHEL first to generate dependencies for CentOS and Oracle Linux
 make -j4 "${MAKE_TARGETS_RHEL[@]}"
