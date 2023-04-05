@@ -57,8 +57,8 @@ cmake -DSSG_TARGET_OVAL_MINOR_VERSION:STRING=10 ../
 make -j4 "${MAKE_TARGETS_RHEL[@]}"
 make -j4 "${MAKE_TARGETS_OTHERS[@]}"
 
-find . -type f -name '*ds-1.2*' -exec rename ds-1.2.xml ds.xml '{}' \;
-find . -type f -name '*xccdf-1.2*' -exec rename xccdf-1.2.xml xccdf.xml '{}' \;
+find . -type f -name '*ds-1.2*' -exec rename ds-1.3.xml ds.xml '{}' \;
+find . -type f -name '*xccdf-1.2*' -exec rename xccdf-1.3.xml xccdf.xml '{}' \;
 
 cp *-ds.xml *-xccdf.xml *-oval.xml *-cpe-dictionary.xml "$DIST_DIR"
 echo
