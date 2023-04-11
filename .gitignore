@@ -51,4 +51,4 @@ Temporary Items
 *.bundle
 
 # build dir
-#build/
+build/
