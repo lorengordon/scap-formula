@@ -13,14 +13,14 @@ init:
   - ps: echo $env:PILLAR_HOME
 install:
   - ps: |
+      [Net.ServicePointManager]::SecurityProtocol = "Tls12, Tls13"
       $null = `
         (new-object net.webclient).DownloadFile(${env:SALT_URL}, `
         "${env:temp}\salt-minion.exe")
-  - ps: |
       $null = `
         Start-Process -FilePath "${env:temp}\salt-minion.exe" `
         -ArgumentList @("/S", "/install-dir=c:\salt") -NoNewWindow -PassThru -Wait
-  - ps: C:\salt\salt-call.bat --versions-report
+      C:\salt\salt-call.bat --versions-report
 
 test_script:
   - ps: |
