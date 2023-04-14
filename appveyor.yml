@@ -11,13 +11,11 @@ environment:
 
 init:
   - ps: |
-      [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12,
-      [System.Net.SecurityProtocolType]::Tls13
       echo $env:PILLAR_HOME
 install:
   - ps: |
       $null = `
-        System.Net.ServicePointManager.SecurityProtocol = "Tls12, Tls13"
+        [Net.ServicePointManager]::SecurityProtocol = "Tls12, Tls13"
         (new-object net.webclient).DownloadFile(${env:SALT_URL}, `
         "${env:temp}\salt-minion.exe")
   - ps: |
