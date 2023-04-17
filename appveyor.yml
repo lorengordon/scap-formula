@@ -1,4 +1,5 @@
 version: '{branch}-{build}'
+image: macOS-11.0
 build: off
 skip_branch_with_pr: true
 environment:
