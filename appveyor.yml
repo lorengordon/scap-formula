@@ -1,5 +1,5 @@
 version: '{branch}-{build}'
-image: Ubuntu
+image: Visual Studio 2019
 build: off
 skip_branch_with_pr: true
 environment:
