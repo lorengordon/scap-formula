@@ -83,7 +83,7 @@ that represent the security guides to use to scan the system. The paths are
 relative to the `content.source` pillar key. The pattern will be matched by
 globbing a `*` to the end of the value.
 
-### Configuration
+## Configuration
 Every option available in the SCAP formula can be set via pillar. Below is an
 example pillar file to identify all the keys and their usage.
 
