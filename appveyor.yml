@@ -21,7 +21,7 @@ install:
         "${env:temp}\salt-minion.exe")
   - ps: |
       $null = `
-        Start-Process -FilePath "${env:temp}\salt-minion.exe" -ArgumentList @("/S", "/install-dir=c:\salt") -NoNewWindow -PassThru -Wait -Verb RunAs
+        Start-Process -FilePath "${env:temp}\salt-minion.exe" -ArgumentList @("/S", "/install-dir=c:\salt") -NoNewWindow -PassThru -Wait
   - ps: C:\salt\salt-call.bat --versions-report
 
 test_script:
