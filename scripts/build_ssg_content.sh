@@ -48,8 +48,8 @@ echo
 cd build
 
 # OpenSCAP content default supports SCAP 1.3. Salt installs SCAP 1.2
-# Need to build content to support SCAP 1.2
-# more info here: https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#331-building-compliant-scap-12-content
+# Build SCAP 1.3 content
+# more info here: https://complianceascode.readthedocs.io/en/latest/manual/developer/02_building_complianceascode.html#building
 
 cmake -DSSG_TARGET_OVAL_MINOR_VERSION:STRING=11 ../
 
