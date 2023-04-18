@@ -57,7 +57,7 @@ cmake -DSSG_TARGET_OVAL_MINOR_VERSION:STRING=11 ../
 make -j4 "${MAKE_TARGETS_RHEL[@]}"
 make -j4 "${MAKE_TARGETS_OTHERS[@]}"
 
-cp ssg-*.xml "$DIST_DIR"
+cp *-ds.xml *-xccdf.xml *-oval.xml *-cpe-dictionary.xml "$DIST_DIR"
 
 echo
 echo 'Done building content!'
