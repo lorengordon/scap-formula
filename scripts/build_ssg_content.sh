@@ -47,7 +47,6 @@ echo "Building ssg xml content..."
 echo
 cd build
 
-# OpenSCAP content default supports SCAP 1.3. Salt installs SCAP 1.2
 # Build SCAP 1.3 content
 # more info here: https://complianceascode.readthedocs.io/en/latest/manual/developer/02_building_complianceascode.html#building
 
