@@ -1,26 +1,22 @@
 #!/bin/bash
 set -e
 
-# Get the parent directory of where this script is.
-SCRIPT_DIR="${BASH_SOURCE[0]}"
-while [ -h "$SCRIPT_DIR" ] ; do SCRIPT_DIR="$(readlink "$SCRIPT_DIR")"; done
-PROJECT_DIR="$( cd -P "$( dirname "$SCRIPT_DIR" )/.." && pwd )"
-
 # Set vars
 REPO=https://github.com/ComplianceAsCode/content.git
 PROFILES=( C2S stig )
 MAKE_TARGETS_RHEL=( rhel7-content rhel8-content )
 MAKE_TARGETS_OTHERS=( centos7-content centos8-content ol8-content )
-BUILD_DIR="${PROJECT_DIR}/build/content"
-DIST_DIR="${PROJECT_DIR}/scap/content/guides/openscap"
+TMPDIR="${TMPDIR:/tmp}"
+BUILD_DIR="${TMPDIR}/ComplianceAsCode/content"
+DIST_DIR="${TMPDIR}/dist"
 
-# Remove old SSG dist directory
+# Remove old SSG build directory
 echo "Removing directory ${BUILD_DIR}..."
-rm -rf "$BUILD_DIR"
+rm -rf "$BUILD_DIR" "$DIST_DIR"
 
 # Clone the repo and checkout the latest tag
 git clone "$REPO" "$BUILD_DIR" && pushd "$BUILD_DIR"
-TAG="$(git describe --tags $(git rev-list --tags --max-count=1))"
+TAG="${SSG_VER:-$(git describe --tags $(git rev-list --tags --max-count=1))}"
 echo
 echo "Tag to build: ${TAG}"
 echo
@@ -56,6 +52,7 @@ cmake -DSSG_TARGET_OVAL_MINOR_VERSION:STRING=11 ../
 make -j4 "${MAKE_TARGETS_RHEL[@]}"
 make -j4 "${MAKE_TARGETS_OTHERS[@]}"
 
+mkdir -p "$DIST_DIR"
 cp *-ds.xml *-xccdf.xml *-oval.xml *-cpe-dictionary.xml "$DIST_DIR"
 
 echo
